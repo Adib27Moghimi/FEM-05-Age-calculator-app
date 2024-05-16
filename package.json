@@ -1,0 +1,14 @@
+{
+  "name": "age-calculator-app",
+  "version": "1.0.0",
+  "description": "Age calculator app",
+  "main": "index.js",
+  "scripts": {
+    "watch:tailwind": "tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
+  },
+  "author": "Adib Moghimi",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
