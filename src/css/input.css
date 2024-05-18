@@ -1,3 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body input {
+    @apply text-[32px];
+  }
+}
+
+@layer components {
+  .poppins-regular-italic {
+    @apply font-poppins font-normal italic;
+  }
+  .poppins-bold {
+    @apply font-poppins font-bold not-italic;
+  }
+  .poppins-extrabold-italic {
+    @apply font-poppins font-extrabold italic;
+  }
+}
