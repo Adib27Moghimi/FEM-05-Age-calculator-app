@@ -3,12 +3,26 @@ module.exports = {
   content: ["./src/**/*.{html,js}", "./index.html"],
   theme: {
     screens: {
+      max221: { max: "221px" },
+      // => @media (max-width: 221px) { ... }
+      min222: "222px",
+      // => @media (min-width: 22px) { ... }
+      max259: { max: "259px" },
+      // => @media (max-width: 259px) { ... }
+      min260: "260px",
+      // => @media (min-width: 260px) { ... }
+      min280: "280px",
+      // => @media (min-width: 280px) { ... }
+      max319: { max: "319px" },
+      // => @media (max-width: 319px) { ... }
       mobile1: "320px",
       // => @media (min-width: 320px) { ... }
       mobile2: "375px",
       // => @media (min-width: 375px) { ... }
-      tablet: "640px",
+      tablet1: "640px",
       // => @media (min-width: 640px) { ... }
+      tablet2: "768px",
+      // => @media (min-width: 768px) { ... }
       laptop: "1024px",
       // => @media (min-width: 1024px) { ... }
       desktop1: "1280px",

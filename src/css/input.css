@@ -8,16 +8,28 @@
   body input {
     @apply text-[32px];
   }
+  body form ul.list li span {
+    @apply text-primary-purple;
+  }
 }
 
 @layer components {
-  .poppins-regular-italic {
-    @apply font-poppins font-normal italic;
+  .form-laptop {
+    @apply p-[3.75rem] w-7/12 h-2/3 rounded-br-[12rem];
   }
-  .poppins-bold {
-    @apply font-poppins font-bold not-italic;
+  .inputs-wrapper-max259 {
+    @apply flex-col items-center gap-y-4;
   }
-  .poppins-extrabold-italic {
-    @apply font-poppins font-extrabold italic;
+  .input {
+    @apply border-[1.5px] border-Neutral-grey-light rounded-lg outline-none focus:border-primary-purple caret-primary-purple placeholder-Neutral-grey-smokey placeholder-opacity-80 font-normal text-xl px-3 w-[5.25rem] h-[3.25rem] max319:w-16 max319:text-sm tablet1:w-24 tablet1:text-2xl tablet2:w-28;
+  }
+  .input-laptop {
+    @apply font-bold text-3xl p-4 w-32;
+  }
+  .label {
+    @apply block mb-2 text-Neutral-grey-smokey text-xs font-poppins font-bold tracking-[0.2em] max319:text-[0.6rem] laptop:text-sm;
+  }
+  .list-laptop {
+    @apply text-[5.7rem] leading-[1.125] mt-9;
   }
 }
