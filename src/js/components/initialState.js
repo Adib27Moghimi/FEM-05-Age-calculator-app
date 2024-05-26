@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
-    <title>Age calculator app</title>
-    <link rel="stylesheet" href="./src/css/output.css" />
-    <script defer type="module" src="./src/js/App.js"></script>
-  </head>
-  <body
-    class="body font-poppins bg-Neutral-white-off min-h-screen flex justify-center pt-20 laptop:items-center laptop:pt-0"
-  >
-    <form
+"use strict";
+
+export default function initialState() {
+  return `
+     <form
       action=""
       autocomplete="off"
       class="form bg-Neutral-white rounded-3xl rounded-br-[6rem] flex flex-col justify-between px-4 py-12 w-11/12 max-w-max h-3/5 relative max259:h-[91.66%] tablet1:max-w-[58.33%] tablet2:h-2/3 laptop:form-laptop"
@@ -76,5 +61,5 @@
         <li><span class="day-date">--</span>days</li>
       </ul>
     </form>
-  </body>
-</html>
+    `;
+}

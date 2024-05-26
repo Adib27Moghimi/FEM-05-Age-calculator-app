@@ -659,6 +659,10 @@ body form ul.list li span{
   top: 30.5%;
 }
 
+.mt-1{
+  margin-top: 0.25rem;
+}
+
 .flex{
   display: flex;
 }
@@ -672,8 +676,8 @@ body form ul.list li span{
   height: 60%;
 }
 
-.h-screen{
-  height: 100vh;
+.min-h-screen{
+  min-height: 100vh;
 }
 
 .w-11\/12{
@@ -683,10 +687,6 @@ body form ul.list li span{
 .max-w-max{
   max-width: -moz-max-content;
   max-width: max-content;
-}
-
-.cursor-pointer{
-  cursor: pointer;
 }
 
 .flex-col{
@@ -768,6 +768,10 @@ body form ul.list li span{
   font-family: Poppins, sans-serif;
 }
 
+.text-\[0\.7rem\]{
+  font-size: 0.7rem;
+}
+
 .text-\[3\.375rem\]{
   font-size: 3.375rem;
 }
@@ -778,6 +782,11 @@ body form ul.list li span{
 
 .italic{
   font-style: italic;
+}
+
+.text-red-300{
+  --tw-text-opacity: 1;
+  color: rgb(252 165 165 / var(--tw-text-opacity));
 }
 
 @media (max-width: 259px){
