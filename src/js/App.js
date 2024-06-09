@@ -1,154 +1,169 @@
-import initialState from "./components/initialState.js";
+"use strict";
+
+import ErrorMessage from "./components/ErrorMessage.js";
 
 //// ! Selections
-const body = document.querySelector("body");
-
-body.innerHTML = "";
-body.insertAdjacentHTML("afterbegin", initialState());
-
-//// ! Selections
-const arrowButton = document.querySelector(".arrow-box");
-
-const outputDay = document.querySelector(".day-date");
-const outputMonth = document.querySelector(".month-date");
-const outputYear = document.querySelector(".year-date");
-
-const inputDay = document.querySelector(".input-day");
-const inputMonth = document.querySelector(".input-month");
 const inputYear = document.querySelector(".input-year");
+const inputMonth = document.querySelector(".input-month");
+const inputDay = document.querySelector(".input-day");
 
-const errorTextDay = document.querySelector(".error-text-day");
-const errorTextMonth = document.querySelector(".error-text-month");
-const errorTextYear = document.querySelector(".error-text-year");
+const ageYearEl = document.querySelectorAll(".age-year");
+const ageMonthEl = document.querySelectorAll(".age-month");
+const ageDayEl = document.querySelectorAll(".age-day");
 
-//// ! Now date
-const dateNow = new Date();
+const ageYearEls = Array.from(ageYearEl, (el) => el);
+const ageMonthEls = Array.from(ageMonthEl, (el) => el);
+const ageDayEls = Array.from(ageDayEl, (el) => el);
 
-//// ! Date calculation
-arrowButton.addEventListener("click", function (e) {
-  e.preventDefault();
+const form = document.querySelector(".form");
+//// ! Initial values of inputs
+function initInput() {
+  inputYear.value = "";
+  inputMonth.value = "";
+  inputDay.value = "";
+}
+//// ! Initial values of age
+function initAge() {
+  ageYearEls.map((span) => (span.textContent = "--"));
+  ageMonthEls.map((span) => (span.textContent = "--"));
+  ageDayEls.map((span) => (span.textContent = "--"));
+}
 
-  //// ! Current date
-  const currentDay = dateNow.getDate();
-  const currentMonth = dateNow.getMonth() + 1;
-  const currentYear = dateNow.getFullYear();
+initInput();
+//// ! Functions
+function checkInputEligibility(input, type) {
+  initAge();
 
-  //// ! The difference between the entered date and the current date
-  const diffDayEntered = currentDay - inputDay.value;
-  const diffMonthEntered = currentMonth - inputMonth.value;
-  const diffYearEntered = currentYear - inputYear.value;
-
-  //// ! The initial output date
-  const initOutputDate = function () {
-    outputDay.textContent = "--";
-    outputMonth.textContent = "--";
-    outputYear.textContent = "--";
-  };
-  //// ! The initial errors text
-  const initError = function () {
-    errorTextDay.textContent = "";
-    errorTextMonth.textContent = "";
-    errorTextYear.textContent = "";
-  };
-  //// ! Calculate age and display it
-  const finalOutputDate = function () {
-    initOutputDate();
-    initError();
-    if (
-      diffYearEntered < 0 ||
-      (diffYearEntered === 0 && diffMonthEntered < 0) ||
-      (diffYearEntered === 0 && diffMonthEntered === 0 && diffDayEntered < 0)
-    )
-      return;
-
-    if (
-      (diffYearEntered === 0 &&
-        diffMonthEntered === 0 &&
-        (diffDayEntered === 0 || diffDayEntered > 0)) ||
-      (diffYearEntered === 0 &&
-        diffMonthEntered > 0 &&
-        (diffDayEntered === 0 || diffDayEntered > 0)) ||
-      (diffYearEntered > 0 &&
-        diffMonthEntered === 0 &&
-        (diffDayEntered === 0 || diffDayEntered > 0)) ||
-      (diffYearEntered > 0 &&
-        diffMonthEntered > 0 &&
-        (diffDayEntered === 0 || diffDayEntered > 0))
-    ) {
-      outputDay.textContent = diffDayEntered;
-      outputMonth.textContent = diffMonthEntered;
-      outputYear.textContent = diffYearEntered;
-    }
-
-    if (
-      (diffYearEntered === 0 && diffMonthEntered > 0 && diffDayEntered < 0) ||
-      (diffYearEntered > 0 && diffMonthEntered > 0 && diffDayEntered < 0)
-    ) {
-      outputDay.textContent = 30 - Math.abs(diffDayEntered);
-      outputMonth.textContent = diffMonthEntered - 1;
-      outputYear.textContent = diffYearEntered;
-    }
-
-    if (
-      (diffYearEntered > 0 && diffMonthEntered < 0 && diffDayEntered < 0) ||
-      (diffYearEntered > 0 && diffMonthEntered === 0 && diffDayEntered < 0)
-    ) {
-      outputDay.textContent = 30 - Math.abs(diffDayEntered);
-      outputMonth.textContent = 11 - Math.abs(diffMonthEntered);
-      outputYear.textContent = diffYearEntered - 1;
-    }
-
-    if (
-      diffYearEntered > 0 &&
-      diffMonthEntered < 0 &&
-      (diffDayEntered === 0 || diffDayEntered > 0)
-    ) {
-      outputDay.textContent = diffDayEntered;
-      outputMonth.textContent = 12 - Math.abs(diffMonthEntered);
-      outputYear.textContent = diffYearEntered - 1;
-    }
-  };
-
-  //// ! The validation of the entered date
-  let validEntryDate = true;
-
-  if (
-    !inputDay.value ||
-    !inputMonth.value ||
-    !inputYear.value ||
-    inputDay.value < 1 ||
-    inputDay.value > 30 ||
-    inputMonth.value < 1 ||
-    inputMonth.value > 12 ||
-    (inputYear.value &&
-      (inputYear.value < currentYear - 99 || inputYear.value > currentYear))
-  ) {
-    //// ! The invalidation of the entered date
-    validEntryDate = false;
-
-    //// ! The initial output date
-    initOutputDate();
-    //// ! The initial errors text
-    initError();
-
-    //// ! Displays the text of errors
-    if (!inputDay.value) errorTextDay.textContent = "This is required";
-    if (!inputMonth.value) errorTextMonth.textContent = "This is required";
-    if (!inputYear.value) errorTextYear.textContent = "This is required";
-
-    if (inputDay.value && (inputDay.value < 1 || inputDay.value > 30))
-      errorTextDay.textContent = "Day is invalid";
-
-    if (inputMonth.value && (inputMonth.value < 1 || inputMonth.value > 12))
-      errorTextMonth.textContent = "Month is invalid";
-
-    if (
-      inputYear.value &&
-      (inputYear.value < currentYear - 99 || inputYear.value > currentYear)
-    )
-      errorTextYear.textContent = "Year is invalid";
+  //// ! Input empty
+  if (input.value.trim() === "") {
+    renderError(input, "This is required");
+    return false;
   }
 
-  if (!validEntryDate) return;
-  finalOutputDate();
+  //// ! Year input error
+  if (type === "year" && +input.value < 100) {
+    renderError(input, `Must be from 100 to ${new Date().getFullYear()}`);
+    return false;
+  }
+
+  //// ! Month input error
+  if (type === "month" && (+input.value > 12 || +input.value < 1)) {
+    renderError(input, "Must be a valid month");
+    return false;
+  }
+
+  //// ! The last day of the month of the year of birth
+  const lastDay = new Date(+inputYear.value, +inputMonth.value, 0).getDate();
+
+  //// ! Day input error
+  if (type === "day" && (+input.value > 31 || +input.value < 1)) {
+    renderError(input, "Must be a valid day");
+    return false;
+  }
+  if (
+    type === "day" &&
+    +inputYear.value &&
+    +inputMonth.value &&
+    +input.value > lastDay
+  ) {
+    renderError(input, `Must be from 1 to ${lastDay}`);
+    return false;
+  }
+
+  //// ! 1- Future date error
+  if (+inputYear.value > new Date().getFullYear()) {
+    inputMonth.nextElementSibling?.remove();
+    inputDay.nextElementSibling?.remove();
+    renderError(
+      inputYear,
+      `This is future date, must be from 100 to ${new Date().getFullYear()}`
+    );
+    return false;
+  }
+
+  if (
+    +inputYear.value === new Date().getFullYear() &&
+    +inputMonth.value > new Date().getMonth() + 1 &&
+    +inputMonth.value <= 12
+  ) {
+    inputYear.nextElementSibling?.remove();
+    inputDay.nextElementSibling?.remove();
+    renderError(
+      inputMonth,
+      `This is future date, must be from 1 to ${new Date().getMonth() + 1}`
+    );
+    return false;
+  }
+
+  //// ! 1- Future date error (added)
+  if (
+    +inputYear.value === new Date().getFullYear() &&
+    +inputMonth.value === new Date().getMonth() + 1 &&
+    +inputDay.value > new Date().getDate()
+  ) {
+    inputYear.nextElementSibling?.remove();
+    inputMonth.nextElementSibling?.remove();
+    renderError(
+      inputDay,
+      `This is future date, must be from 1 to ${new Date().getDate()}`
+    );
+    return false;
+  }
+
+  //// ! All eligible => Delete all errors and get date
+  input.nextElementSibling?.remove();
+  return +input.value;
+}
+
+function calcAge(year, month, day) {
+  const today = new Date();
+  const birthDate = new Date(year, month - 1, day);
+  let years = today.getFullYear() - birthDate.getFullYear();
+  let months = today.getMonth() - birthDate.getMonth();
+  let days = today.getDate() - birthDate.getDate();
+
+  //// ! Checking the negativity of the months value
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  //// ! Checking the negativity of the days value
+  if (days < 0) {
+    months--;
+    const tempDate = new Date(today.getFullYear(), today.getMonth(), 0);
+    days += tempDate.getDate();
+    //// ! Checking the negativity of the months value (added)
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+  }
+
+  return { years, months, days };
+}
+
+function renderError(input, message) {
+  const errorEl = input.nextElementSibling;
+  if (errorEl) {
+    errorEl.textContent = message;
+    return;
+  }
+
+  input.insertAdjacentHTML("afterend", ErrorMessage(message));
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const year = checkInputEligibility(inputYear, "year");
+  const month = checkInputEligibility(inputMonth, "month");
+  const day = checkInputEligibility(inputDay, "day");
+
+  if (year && month && day) {
+    const { days, months, years } = calcAge(year, month, day);
+
+    ageYearEls.map((span) => (span.textContent = `${years}`.padStart(2, 0)));
+    ageMonthEls.map((span) => (span.textContent = `${months}`.padStart(2, 0)));
+    ageDayEls.map((span) => (span.textContent = `${days}`.padStart(2, 0)));
+  }
 });
