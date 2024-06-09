@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [My solution url in Frontend mentor](https://www.frontendmentor.io/solutions/a-fully-responsive-age-calculator-app-with-tailwindcss-javascript-w1zjd09qsx)
+- Live Site URL: [My live site url in GitHub](https://adib27moghimi.github.io/FEM-05-Age-calculator-app/)
 
 ## My process
 
@@ -73,4 +73,4 @@ ageYearEls.map((span) => (span.textContent = `${years}`.padStart(2, 0)));
 
 I used Mehrshad's YouTube channel to complete parts of the JavaScript of this challenge.
 
--YouTube - [CodeLab Plus](https://www.youtube.com/@codelabplus)
+-YouTube - [@DeepDevs](https://www.youtube.com/@DeepDevs)
