@@ -30,6 +30,9 @@
     @apply block mb-2 text-Neutral-grey-smokey text-xs font-poppins font-bold tracking-[0.2em] max319:text-[0.6rem] laptop:text-sm;
   }
   .list-laptop {
-    @apply text-[5.7rem] leading-[1.125] mt-9;
+    @apply text-[5.7rem] leading-[1.125];
+  }
+  .error {
+    @apply text-primary-red-light text-[0.7rem] mt-1 italic w-[5.25rem] max319:w-16 tablet1:w-24 tablet2:w-28;
   }
 }

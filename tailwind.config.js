@@ -3,6 +3,8 @@ module.exports = {
   content: ["./src/**/*.{html,js}", "./index.html"],
   theme: {
     screens: {
+      max150: { max: "150px" },
+      // => @media (max-width: 150px) { ... }
       max221: { max: "221px" },
       // => @media (max-width: 221px) { ... }
       min222: "222px",

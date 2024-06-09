@@ -647,24 +647,47 @@ body form ul.list li span{
   }
 }
 
-.absolute{
-  position: absolute;
+.error{
+  margin-top: 0.25rem;
+  width: 5.25rem;
+  font-size: 0.7rem;
+  font-style: italic;
+  --tw-text-opacity: 1;
+  color: hsl(0 100% 67% / var(--tw-text-opacity));
+}
+
+@media (max-width: 319px){
+  .error{
+    width: 4rem;
+  }
+}
+
+@media (min-width: 640px){
+  .error{
+    width: 6rem;
+  }
+}
+
+@media (min-width: 768px){
+  .error{
+    width: 7rem;
+  }
 }
 
 .relative{
   position: relative;
 }
 
-.top-\[30\.5\%\]{
-  top: 30.5%;
-}
-
-.mt-1{
-  margin-top: 0.25rem;
+.bottom-\[28px\]{
+  bottom: 28px;
 }
 
 .flex{
   display: flex;
+}
+
+.hidden{
+  display: none;
 }
 
 .size-6{
@@ -693,6 +716,10 @@ body form ul.list li span{
   flex-direction: column;
 }
 
+.items-center{
+  align-items: center;
+}
+
 .justify-center{
   justify-content: center;
 }
@@ -718,13 +745,8 @@ body form ul.list li span{
   border-bottom-right-radius: 6rem;
 }
 
-.border-b{
-  border-bottom-width: 1px;
-}
-
-.border-b-Neutral-grey-light{
-  --tw-border-opacity: 1;
-  border-bottom-color: hsl(0 0% 86% / var(--tw-border-opacity));
+.border-b-2{
+  border-bottom-width: 2px;
 }
 
 .bg-Neutral-white{
@@ -768,10 +790,6 @@ body form ul.list li span{
   font-family: Poppins, sans-serif;
 }
 
-.text-\[0\.7rem\]{
-  font-size: 0.7rem;
-}
-
 .text-\[3\.375rem\]{
   font-size: 3.375rem;
 }
@@ -782,11 +800,6 @@ body form ul.list li span{
 
 .italic{
   font-style: italic;
-}
-
-.text-red-300{
-  --tw-text-opacity: 1;
-  color: rgb(252 165 165 / var(--tw-text-opacity));
 }
 
 @media (max-width: 259px){
@@ -814,7 +827,6 @@ body form ul.list li span{
   }
 
   .laptop\:list-laptop{
-    margin-top: 2.25rem;
     font-size: 5.7rem;
     line-height: 1.125;
   }
@@ -823,6 +835,24 @@ body form ul.list li span{
 .active\:bg-Neutral-black-off:active{
   --tw-bg-opacity: 1;
   background-color: hsl(0 0% 8% / var(--tw-bg-opacity));
+}
+
+@media (max-width: 150px){
+  .max150\:order-1{
+    order: 1;
+  }
+
+  .max150\:order-2{
+    order: 2;
+  }
+
+  .max150\:block{
+    display: block;
+  }
+
+  .max150\:hidden{
+    display: none;
+  }
 }
 
 @media (max-width: 221px){
@@ -848,10 +878,6 @@ body form ul.list li span{
 }
 
 @media (max-width: 259px){
-  .max259\:top-\[45\%\]{
-    top: 45%;
-  }
-
   .max259\:h-\[91\.66\%\]{
     height: 91.66%;
   }
@@ -903,10 +929,6 @@ body form ul.list li span{
 }
 
 @media (min-width: 768px){
-  .tablet2\:top-\[26\.5\%\]{
-    top: 26.5%;
-  }
-
   .tablet2\:h-2\/3{
     height: 66.666667%;
   }
@@ -917,8 +939,8 @@ body form ul.list li span{
 }
 
 @media (min-width: 1024px){
-  .laptop\:top-\[25\.5\%\]{
-    top: 25.5%;
+  .laptop\:bottom-\[40px\]{
+    bottom: 40px;
   }
 
   .laptop\:size-10{
@@ -945,6 +967,10 @@ body form ul.list li span{
 
   .laptop\:p-5{
     padding: 1.25rem;
+  }
+
+  .laptop\:pb-14{
+    padding-bottom: 3.5rem;
   }
 
   .laptop\:pt-0{
